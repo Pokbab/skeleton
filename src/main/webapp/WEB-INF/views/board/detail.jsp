@@ -14,6 +14,8 @@
 			</tr>
 		</table>
 		<input type="submit" id="btnSubmit" value="저장">
+		<a href="/board/remove?boardNo=${board.boardNo}"><input type="button" id="btnRemove" value="삭제"></a>
+		<%-- <input type="button" id="btnRemove" value="삭제" onclick="location.href='/board/remove?boardNo=${board.boardNo}';"> --%>
 		<input type="hidden" name="boardNo" value="${board.boardNo}">
 	</form>
 </body>

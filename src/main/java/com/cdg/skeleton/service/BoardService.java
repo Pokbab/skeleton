@@ -44,4 +44,11 @@ public interface BoardService {
 	 */
 	void modify(Board board);
 
+	/**
+	 * 게시글을 삭제한다
+	 * 
+	 * @param board
+	 */
+	void remove(Board board);
+
 }

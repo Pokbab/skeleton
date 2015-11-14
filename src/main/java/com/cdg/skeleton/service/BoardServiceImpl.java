@@ -53,11 +53,19 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Board getContent(Board board) {
+		
+		boardMapper.updateHit(board.getBoardNo());
+		
 		return boardMapper.selectBoard(board);
 	}
 
 	@Override
 	public void modify(Board board) {
 		boardMapper.updateBoard(board);
+	}
+
+	@Override
+	public void remove(Board board) {
+		boardMapper.deleteBoard(board.getBoardNo());
 	}
 }

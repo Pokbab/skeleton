@@ -10,6 +10,7 @@
 			, title = #{title}
 			, contents = #{contents}
 			, user_no = #{userNo}
+			, hit = 0
 			, create_date = NOW()
 			, update_date = NOW()
 	</insert>
@@ -35,8 +36,18 @@
 			board_no = #{boardNo}
 	</update>
 	
-	<delete id="deleteBoard" parameterType="int">
+	<delete id="deleteBoard" parameterType="long">
 		DELETE FROM board
 		WHERE board_no = #{boardNo}
 	</delete>
+	
+	<update id="updateHit" parameterType="board">
+		UPDATE board
+		SET
+			  hit = hit + 1
+		WHERE
+			board_no = #{boardNo}
+	</update>
+	
+	
 </mapper>

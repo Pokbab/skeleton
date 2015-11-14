@@ -23,7 +23,9 @@ public interface BoardMapper {
 	
 	public void updateBoard(Board board);
 	
-	public void deleteBoard(int boardNo);
+	public void deleteBoard(long boardNo);
 
 	public Board selectBoard(Board board);
+
+	public void updateHit(long boardNo);
 }

@@ -69,4 +69,14 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
+	
+	@RequestMapping("/board/remove")
+	public String remove(Board board) {
+		
+		boardService.remove(board);
+		
+		return "redirect:/board/list";
+	}
+	
+	
 }
