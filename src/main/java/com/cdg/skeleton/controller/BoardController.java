@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cdg.skeleton.domain.Board;
 import com.cdg.skeleton.service.BoardService;
@@ -50,5 +52,21 @@ public class BoardController {
 		model.addAttribute("boardList", boardList);
 		
 		return "board/list";
+	}
+	
+	@RequestMapping("/board/detail")
+	public String getDetail(Model model, Board board) {
+		
+		model.addAttribute("board", boardService.getContent(board));
+		
+		return "board/detail";
+	}
+	
+	@RequestMapping(value = "/board/modify", method = RequestMethod.POST)
+	public String modify(Board board) {
+		
+		boardService.modify(board);
+		
+		return "redirect:/board/list";
 	}
 }

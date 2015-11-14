@@ -31,4 +31,17 @@ public interface BoardService {
 	 */
 	List<Board> getList();
 
+	/**
+	 * @param board
+	 * @return
+	 */
+	Board getContent(Board board);
+
+	/**
+	 * 게시판을 수정한다
+	 * 
+	 * @param board
+	 */
+	void modify(Board board);
+
 }

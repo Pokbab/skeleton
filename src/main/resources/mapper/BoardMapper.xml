@@ -19,6 +19,12 @@
 		FROM	 board
 	</select>
 	
+	<select id="selectBoard" resultType="board" parameterType="board">
+		SELECT *
+		FROM	 board
+		WHERE board_no = #{boardNo}
+	</select>
+	
 	<update id="updateBoard" parameterType="board">
 		UPDATE board
 		SET

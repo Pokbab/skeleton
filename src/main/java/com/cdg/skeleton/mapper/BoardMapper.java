@@ -24,4 +24,6 @@ public interface BoardMapper {
 	public void updateBoard(Board board);
 	
 	public void deleteBoard(int boardNo);
+
+	public Board selectBoard(Board board);
 }
