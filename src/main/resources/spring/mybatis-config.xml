@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<settings>
+		<!-- 다른 캐시를 사용하기 위해 우선 사용안함으로 설정 -->
+		<setting name="cacheEnabled" value="false" />
+		<!-- 컬럼을 카멜케이스 방식으로 자바에 자동 바인딩 해주는 옵션 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+
+		<setting name="lazyLoadingEnabled" value="true" />
+	</settings>
+
+</configuration>

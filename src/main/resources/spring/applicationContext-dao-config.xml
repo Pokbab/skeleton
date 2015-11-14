@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<util:properties id="jdbc" location="classpath:/properties/jdbc.properties" />
+		
+	<!-- DataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="#{jdbc['mysql.driverClassName']}" />
+		<property name="url" value="#{jdbc['url']}" />
+		<property name="username" value="#{jdbc['username']}" />
+		<property name="password" value="#{jdbc['password']}" />
+		<property name="initialSize" value="#{jdbc['initialSize']}" />
+		<property name="minIdle" value="#{jdbc['minIdle']}" />
+		<property name="maxActive" value="#{jdbc['maxTotal']}" />
+		<property name="maxWait" value="#{jdbc['maxWaitMillis']}" />
+		<property name="defaultAutoCommit" value="false" />
+	</bean>
+	
+	<!-- JDBC -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/spring/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:/mapper/*Mapper.xml" />
+		<property name="typeAliasesPackage" value="com.cdg.skeleton.domain" />
+		<property name="failFast" value="true" />
+	</bean>
+	
+	<!-- Mapper를 스캔함 -->
+	<!-- Mapper *.xml 파일의 namespace와 interface가 동일해야 함 -->
+	<mybatis:scan base-package="com.cdg.skeleton.mapper" factory-ref="sqlSessionFactory"/>
+	
+	<!-- TransactionManager -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
