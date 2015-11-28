@@ -10,6 +10,8 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<mvc:annotation-driven />
+	
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
@@ -21,12 +23,12 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	
-	<mvc:interceptors>
+	<!-- <mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/board/**"/>
 			<ref bean="loginCheckInterceptor"/>
 		</mvc:interceptor>
 	
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 
 </beans>

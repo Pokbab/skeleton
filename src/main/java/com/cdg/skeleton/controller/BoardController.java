@@ -14,9 +14,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cdg.skeleton.domain.Board;
 import com.cdg.skeleton.service.BoardService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 /**
@@ -59,6 +62,18 @@ public class BoardController {
 		
 		return "board/detail";
 	}
+	
+	@ResponseBody
+	@RequestMapping("/detail/json")
+	public String getDetailJson(Model model, Board board) throws JsonProcessingException {
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(boardService.getContent(board));
+		
+		return json;
+	}
+	
+	
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(Board board) {
