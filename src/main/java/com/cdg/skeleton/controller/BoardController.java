@@ -11,12 +11,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cdg.skeleton.domain.Board;
 import com.cdg.skeleton.service.BoardService;
@@ -26,17 +23,18 @@ import com.cdg.skeleton.service.BoardService;
  * @author Kanghoon Choi
  */
 @Controller
+@RequestMapping("/board")
 public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
 
-	@RequestMapping("/board/writeForm")
+	@RequestMapping("/writeForm")
 	public String getWriteForm() {
 		return "board/writeForm";
 	}
 	
-	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String write(Board board) {
 		
 		boardService.write(board);
@@ -44,7 +42,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	@RequestMapping("/board/list")
+	@RequestMapping("/list")
 	public String getList(Model model) {
 		
 		List<Board> boardList = boardService.getList();
@@ -54,7 +52,7 @@ public class BoardController {
 		return "board/list";
 	}
 	
-	@RequestMapping("/board/detail")
+	@RequestMapping("/detail")
 	public String getDetail(Model model, Board board) {
 		
 		model.addAttribute("board", boardService.getContent(board));
@@ -62,7 +60,7 @@ public class BoardController {
 		return "board/detail";
 	}
 	
-	@RequestMapping(value = "/board/modify", method = RequestMethod.POST)
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(Board board) {
 		
 		boardService.modify(board);
@@ -70,7 +68,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	@RequestMapping("/board/remove")
+	@RequestMapping("/remove")
 	public String remove(Board board) {
 		
 		boardService.remove(board);

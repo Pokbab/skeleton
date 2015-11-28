@@ -20,5 +20,13 @@
 	<context:component-scan base-package="com.cdg.skeleton">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/board/**"/>
+			<ref bean="loginCheckInterceptor"/>
+		</mvc:interceptor>
+	
+	</mvc:interceptors>
 
 </beans>

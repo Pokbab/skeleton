@@ -7,6 +7,8 @@
 
 package com.cdg.skeleton.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -50,9 +52,11 @@ public class MainConroller {
 	}
 	
 	@RequestMapping("/login")
-	public String login(User user) throws LoginFailException {
+	public String login(HttpSession session, User user) throws LoginFailException {
 		
 		userService.login(user);
+		
+		session.setAttribute("user", user);
 		
 		return "redirect:/board/list";
 	}
