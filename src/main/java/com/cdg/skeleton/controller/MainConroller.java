@@ -31,11 +31,23 @@ public class MainConroller {
 		return "index";
 	}
 	
+	@RequestMapping("/joinForm")
+	public String getJoinForm() {
+		return "joinForm";
+	}
+	
+	@RequestMapping("/signUp")
+	public String signUp(User user) {
+		
+		userService.signUp(user);
+		
+		return "redirect:/loginForm";
+	}
+	
 	@RequestMapping("/loginForm")
 	public String getLoginForm() {
 		return "loginForm";
 	}
-	
 	
 	@RequestMapping("/login")
 	public String login(User user) throws LoginFailException {

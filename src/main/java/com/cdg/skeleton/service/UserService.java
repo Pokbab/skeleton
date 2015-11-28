@@ -22,4 +22,9 @@ public interface UserService {
 	 */
 	void login(User user) throws LoginFailException;
 
+	/**
+	 * @param user
+	 */
+	void signUp(User user);
+
 }

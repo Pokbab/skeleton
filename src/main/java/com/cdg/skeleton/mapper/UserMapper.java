@@ -16,4 +16,9 @@ import com.cdg.skeleton.domain.User;
 public interface UserMapper {
 
 	User selectUser(User user);
+
+	/**
+	 * @param user
+	 */
+	void insertUser(User user);
 }

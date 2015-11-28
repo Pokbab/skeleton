@@ -11,4 +11,12 @@
 		AND password = #{password}
 	</select>
 	
+	<insert id="insertUser" parameterType="user">
+		INSERT user
+		SET	  id = #{id}
+			, password = #{password}
+			, name = #{name}
+			, create_date = NOW()
+	</insert>
+	
 </mapper>

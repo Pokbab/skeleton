@@ -43,6 +43,21 @@ public class UserMapperTest {
 		assertNotNull(actual);
 	}
 	
+	@Test
+	public void testInserUser() throws Exception {
+		//Given
+		User user = new User();
+		user.setId("aaaa");
+		user.setName("kim");
+		user.setPassword("1");
+
+		//When
+		mapper.insertUser(user);
+
+		//Then
+
+	}
+	
 
 
 }
