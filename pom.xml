@@ -189,6 +189,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.36</version>
 		</dependency>
+		
+		<!-- swagger -->
+		<dependency>
+			<groupId>com.mangofactory</groupId>
+			<artifactId>swagger-springmvc</artifactId>
+			<version>1.0.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

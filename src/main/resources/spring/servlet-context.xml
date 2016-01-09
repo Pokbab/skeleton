@@ -9,9 +9,18 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-	<mvc:annotation-driven />
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">	
+				<constructor-arg index="0" value="UTF-8"/>
+				<property name="writeAcceptCharset" value="false"/>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 	
 	<mvc:resources location="/resources/" mapping="/resources/**"/>
+	<mvc:resources location="/WEB-INF/swagger/" mapping="/docs/**"/>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
