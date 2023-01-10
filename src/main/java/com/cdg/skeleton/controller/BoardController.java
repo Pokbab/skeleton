@@ -28,7 +28,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-	
+ㅇㄹㅇㄹ
+	df
+//	ddfㅇㄹㅇㄹㅇㄹㅇㄹ
+//			dfㅇㄹㅇ
+//	df
+//					df
+//	d
+//							f
+//	df
+//
+//
+//ㅇㄹㅇㄹ
 	@Autowired
 	private BoardService boardService;
 
