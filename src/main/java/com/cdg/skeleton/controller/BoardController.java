@@ -30,16 +30,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class BoardController {
 ㅇㄹㅇㄹ
 	df
-	ddfㅇㄹㅇㄹㅇㄹㅇㄹ
-			dfㅇㄹㅇ
-	df
-					df
-	d
-							f
-	df
-
-
-	
+//	ddfㅇㄹㅇㄹㅇㄹㅇㄹ
+//			dfㅇㄹㅇ
+//	df
+//					df
+//	d
+//							f
+//	df
+//
+//
+//ㅇㄹㅇㄹ
 	@Autowired
 	private BoardService boardService;
 
