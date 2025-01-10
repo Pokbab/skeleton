@@ -1,0 +1,6 @@
+logging.config: classpath:logback/logback-${spring.profiles.active}.xml
+
+management.tracing.propagation.type: w3c, b3
+server.log.servlet-access.enabled: true
+server.log.db.access-log.jpa.enabled: true
+server.tracing.propagation.feign.enabled: true

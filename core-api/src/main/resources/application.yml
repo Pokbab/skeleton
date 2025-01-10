@@ -1,0 +1,26 @@
+spring.application.name: core-api
+spring.profiles.active: local
+
+spring:
+  config:
+    import:
+      - logging.yml
+  web:
+    resources:
+      add-mappings: true
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+server:
+  server-header: was
+  shutdown: graceful
+  max-http-request-header-size: 32KB
+  compression:
+    enabled: true
+    mime-types: [ text/html, text/xml, text/plain, text/css, text/javascript, application/json, application/xml ]
+    min-response-size: 1KB
+  tomcat:
+    max-connections: 20000
+    threads:
+      max: 600
+      min-spare: 100
