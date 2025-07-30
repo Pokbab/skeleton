@@ -21,6 +21,7 @@ object TracingHelper {
 
 class MdcTaskDecorator : TaskDecorator {
     private val log = LoggerFactory.getLogger(javaClass)
+
     override fun decorate(runnable: Runnable): Runnable {
         val mdcContext = MDC.getCopyOfContextMap()
         return Runnable {

@@ -1,0 +1,4 @@
+elasticsearch:
+  server:
+    host-and-ports: localhost:9300
+    using-ssl: true

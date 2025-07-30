@@ -22,7 +22,7 @@ data class ApiResponseDto<S> private constructor(
 
 enum class ResultType {
     SUCCESS,
-    ERROR
+    ERROR,
 }
 
 data class ErrorMessage(

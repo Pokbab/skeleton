@@ -5,6 +5,7 @@ spring:
   config:
     import:
       - logging.yml
+      - elastic-search.yml
   web:
     resources:
       add-mappings: true

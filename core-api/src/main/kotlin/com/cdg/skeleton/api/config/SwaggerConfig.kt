@@ -19,17 +19,18 @@ class SwaggerConfig {
                 Info()
                     .title("Core API")
                     .description("Core API")
-                    .version("1.0.0")
+                    .version("1.0.0"),
             )
     }
 
     @PostConstruct
     fun init() {
-        val innerClassAwareTypeNameResolver = object : TypeNameResolver() {
-            override fun getNameOfClass(cls: Class<*>): String {
-                return cls.name.substringAfterLast(".").replace("$", "_")
+        val innerClassAwareTypeNameResolver =
+            object : TypeNameResolver() {
+                override fun getNameOfClass(cls: Class<*>): String {
+                    return cls.name.substringAfterLast(".").replace("$", "_")
+                }
             }
-        }
         ModelConverters.getInstance()
             .addConverter(ModelResolver(jacksonObjectMapper(), innerClassAwareTypeNameResolver))
     }

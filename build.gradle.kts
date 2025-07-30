@@ -66,8 +66,6 @@ subprojects {
             jvmTarget = "${project.property("javaVersion")}"
         }
     }
-
-
 }
 
 dependencies {

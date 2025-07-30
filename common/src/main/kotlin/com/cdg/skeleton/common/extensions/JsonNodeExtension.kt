@@ -13,7 +13,10 @@ fun JsonNode.extractField(fieldPath: String): JsonNode {
     return result
 }
 
-fun JsonNode.updateField(fieldPath: String, newValue: String): JsonNode {
+fun JsonNode.updateField(
+    fieldPath: String,
+    newValue: String,
+): JsonNode {
     val fieldNames = fieldPath.split(".")
     var currentNode: JsonNode = this
 

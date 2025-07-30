@@ -4,10 +4,10 @@ BASEDIR=$(cd "$(dirname $0)" && pwd)
 cd $BASEDIR
 
 MODULE_NAME=""
-BASE_PACKAGE="com.cdg"
+BASE_PACKAGE="com.cdg.skeleton"
 
 info() {
-  ehco "INFO: $1"
+  echo "INFO: $1"
 }
 
 warn() {
@@ -17,6 +17,7 @@ warn() {
 error() {
   echo "ERROR: $1"
   exit 1
+}
 
 setModuleName() {
   while true

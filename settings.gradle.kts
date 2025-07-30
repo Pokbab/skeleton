@@ -1,6 +1,9 @@
 rootProject.name = "skeleton"
 
 include(
+    "storage:elastic-search",
+    "domain",
+    "",
     "core-api",
     "common",
     "modules:logging",

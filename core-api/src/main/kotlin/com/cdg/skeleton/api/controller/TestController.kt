@@ -4,7 +4,6 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
-
 @RestController
 class TestController {
     private val log = KotlinLogging.logger {}
@@ -12,6 +11,12 @@ class TestController {
     @GetMapping("/test")
     fun test(): String {
         log.info { "TestController.test()" }
+        return "Hello World"
+    }
+
+    @GetMapping("/test/circuit-breaker")
+    fun testCircuitBreaker(): String {
+        log.info { "TestController.testCircuitBreaker()" }
         return "Hello World"
     }
 }

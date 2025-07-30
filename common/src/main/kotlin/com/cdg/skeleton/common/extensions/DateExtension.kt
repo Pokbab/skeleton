@@ -1,10 +1,7 @@
 package com.cdg.skeleton.common.extensions
 
 import java.math.BigDecimal
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.time.ZoneId
+import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeFormatterBuilder
 import java.time.temporal.ChronoField
@@ -23,20 +20,22 @@ fun String.parseTimestamp(): LocalDateTime {
 }
 
 fun String.parseToDefaultLocalDateTime(): LocalDateTime {
-    val patterns = listOf(
-        "yyyy-MM-dd HH:mm:ss" to LocalDateTime::class,
-        "yyyy-MM-dd'T'HH:mm:ss" to LocalDateTime::class,
-        "yyyyMMddHHmmss" to LocalDateTime::class,
-        "yyyy-MM-dd'T'HH:mm:ss.SSSXXX" to OffsetDateTime::class
-    )
+    val patterns =
+        listOf(
+            "yyyy-MM-dd HH:mm:ss" to LocalDateTime::class,
+            "yyyy-MM-dd'T'HH:mm:ss" to LocalDateTime::class,
+            "yyyyMMddHHmmss" to LocalDateTime::class,
+            "yyyy-MM-dd'T'HH:mm:ss.SSSXXX" to OffsetDateTime::class,
+        )
     for (pattern in patterns) {
         try {
-            val formatter = DateTimeFormatterBuilder()
-                .appendPattern(pattern.first)
-                .optionalStart()
-                .appendFraction(ChronoField.NANO_OF_SECOND, 0, 6, true)
-                .optionalEnd()
-                .toFormatter()
+            val formatter =
+                DateTimeFormatterBuilder()
+                    .appendPattern(pattern.first)
+                    .optionalStart()
+                    .appendFraction(ChronoField.NANO_OF_SECOND, 0, 6, true)
+                    .optionalEnd()
+                    .toFormatter()
             when (pattern.second) {
                 LocalDateTime::class -> return LocalDateTime.parse(this, formatter)
                 OffsetDateTime::class -> return OffsetDateTime.parse(this, formatter).toLocalDateTime()
@@ -46,4 +45,12 @@ fun String.parseToDefaultLocalDateTime(): LocalDateTime {
         }
     }
     throw IllegalArgumentException("Invalid date format: $this")
+}
+
+fun String.parseToYyyyMMddHHmmss(): LocalDateTime {
+    return LocalDateTime.parse(this, yyyyMMddHHmmssFormatter)
+}
+
+fun String.parseToYyyyMMdd(): LocalDate {
+    return LocalDate.parse(this, yyyyMMddFormatter)
 }
